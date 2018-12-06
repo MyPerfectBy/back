@@ -29,8 +29,10 @@ pipeline {
             steps {
                 script {
                         try {
+                            sh "sudo -u root chmod -R 777 /home/makeperfectby/Assembly/${branch}/Back/Code/*"
                             sh "rm -rf /home/makeperfectby/Assembly/${branch}/Back/Code/*"
                             sh "cp -r * /home/makeperfectby/Assembly/${branch}/Back/Code/"
+                            sh "sudo -u root chmod -R 777 /home/makeperfectby/Assembly/${branch}/Back/Code/*"
                         } catch (ex) {
                             e = "<code>\u274C ERROR(${env.BRANCH_NAME} backend branch): DELIVERY ERROR</code>"
                             sh "curl 'https://api.telegram.org/bot705294643:AAGnXC6EzmrpXU4USD6uxq7U1Qt853s4ciYz/sendMessage?chat_id=-211246197@Avakada_CI&text=${e}&parse_mode=HTML'"
