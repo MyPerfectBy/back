@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                         try {
-                            sh "sudo -u root rm -rf /home/makeperfectby/Assembly/${branch}/Back/Code/*"
+                            sh "rm -rf /home/makeperfectby/Assembly/${branch}/Back/Code/*"
                             sh "cp -r * /home/makeperfectby/Assembly/${branch}/Back/Code/"
                         } catch (ex) {
                             e = "<code>\u274C ERROR(${env.BRANCH_NAME} backend branch): DELIVERY ERROR</code>"
