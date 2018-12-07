@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f42b321ecd28252a9cd064f1da9c28c",
+    "content-hash": "b7dd74e985d0d19594195d5b4e771491",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2376,16 +2376,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "10ba96d42cc9a482bce05c8179f06e24e665c920"
+                "reference": "005d9a083d03f588677d15391a716b1ac9b887c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/10ba96d42cc9a482bce05c8179f06e24e665c920",
-                "reference": "10ba96d42cc9a482bce05c8179f06e24e665c920",
+                "url": "https://api.github.com/repos/symfony/config/zipball/005d9a083d03f588677d15391a716b1ac9b887c0",
+                "reference": "005d9a083d03f588677d15391a716b1ac9b887c0",
                 "shasum": ""
             },
             "require": {
@@ -2435,7 +2435,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-26T10:55:26+00:00"
+            "time": "2018-11-30T22:21:14+00:00"
         },
         {
             "name": "symfony/console",
@@ -2508,16 +2508,16 @@
         },
         {
             "name": "symfony/contracts",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "3edf0ab943d1985a356721952cba36ff31bd6e5f"
+                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/3edf0ab943d1985a356721952cba36ff31bd6e5f",
-                "reference": "3edf0ab943d1985a356721952cba36ff31bd6e5f",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/1aa7ab2429c3d594dd70689604b5cf7421254cdf",
+                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf",
                 "shasum": ""
             },
             "require": {
@@ -2572,7 +2572,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-11-24T09:35:08+00:00"
+            "time": "2018-12-05T08:06:11+00:00"
         },
         {
             "name": "symfony/debug",
@@ -2632,16 +2632,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "c2061bce5915f853a619f02ce1278ca83156d375"
+                "reference": "e4adc57a48d3fa7f394edfffa9e954086d7740e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/c2061bce5915f853a619f02ce1278ca83156d375",
-                "reference": "c2061bce5915f853a619f02ce1278ca83156d375",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/e4adc57a48d3fa7f394edfffa9e954086d7740e5",
+                "reference": "e4adc57a48d3fa7f394edfffa9e954086d7740e5",
                 "shasum": ""
             },
             "require": {
@@ -2701,7 +2701,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-28T18:24:18+00:00"
+            "time": "2018-12-02T15:59:36+00:00"
         },
         {
             "name": "symfony/doctrine-bridge",
@@ -2849,16 +2849,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "9b788b5f7cd6be22918f3d18ee3ff0a78e060137"
+                "reference": "921f49c3158a276d27c0d770a5a347a3b718b328"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9b788b5f7cd6be22918f3d18ee3ff0a78e060137",
-                "reference": "9b788b5f7cd6be22918f3d18ee3ff0a78e060137",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/921f49c3158a276d27c0d770a5a347a3b718b328",
+                "reference": "921f49c3158a276d27c0d770a5a347a3b718b328",
                 "shasum": ""
             },
             "require": {
@@ -2909,7 +2909,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-26T10:55:26+00:00"
+            "time": "2018-12-01T08:52:38+00:00"
         },
         {
             "name": "symfony/expression-language",
@@ -2964,7 +2964,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -3454,7 +3454,7 @@
         },
         {
             "name": "symfony/inflector",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/inflector.git",
@@ -3718,7 +3718,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
@@ -3966,7 +3966,7 @@
         },
         {
             "name": "symfony/property-access",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-access.git",
@@ -4856,16 +4856,16 @@
         },
         {
             "name": "symfony/twig-bundle",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bundle.git",
-                "reference": "2842f70b899ab765b3eaccdd3b8cdbb0cbb69fb6"
+                "reference": "024820cbb4aeffc4843c4170b69c057fb4840fb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bundle/zipball/2842f70b899ab765b3eaccdd3b8cdbb0cbb69fb6",
-                "reference": "2842f70b899ab765b3eaccdd3b8cdbb0cbb69fb6",
+                "url": "https://api.github.com/repos/symfony/twig-bundle/zipball/024820cbb4aeffc4843c4170b69c057fb4840fb3",
+                "reference": "024820cbb4aeffc4843c4170b69c057fb4840fb3",
                 "shasum": ""
             },
             "require": {
@@ -4928,7 +4928,7 @@
             ],
             "description": "Symfony TwigBundle",
             "homepage": "https://symfony.com",
-            "time": "2018-11-11T19:52:12+00:00"
+            "time": "2018-12-02T10:42:21+00:00"
         },
         {
             "name": "symfony/validator",
@@ -5640,6 +5640,74 @@
                 "php"
             ],
             "time": "2018-10-10T09:24:14+00:00"
+        },
+        {
+            "name": "overblog/graphiql-bundle",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overblog/GraphiQLBundle.git",
+                "reference": "e3164ef62ff7fd91954009266e84803a6543ae96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overblog/GraphiQLBundle/zipball/e3164ef62ff7fd91954009266e84803a6543ae96",
+                "reference": "e3164ef62ff7fd91954009266e84803a6543ae96",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "symfony/http-foundation": "^3.2.2 || ^4.0",
+                "symfony/routing": "^3.2 || ^4.0",
+                "symfony/twig-bundle": "^3.2.10 || ^4.0"
+            },
+            "require-dev": {
+                "overblog/graphql-bundle": "^0.9.0 || ^0.10.0",
+                "phpunit/phpunit": "^5.7 || ^6.0",
+                "sensio/framework-extra-bundle": "^3.0 || ^4.0",
+                "symfony/browser-kit": "^3.2 || ^4.0",
+                "symfony/config": "^3.2 || ^4.0",
+                "symfony/console": "^3.2 || ^4.0",
+                "symfony/dependency-injection": "^3.2 || ^4.0",
+                "symfony/expression-language": "^3.2 || ^4.0",
+                "symfony/framework-bundle": "^3.2.2 || ^4.0",
+                "symfony/templating": "^3.2 || ^4.0",
+                "symfony/yaml": "^3.2 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Overblog\\GraphiQLBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Overblog",
+                    "homepage": "http://www.over-blog.com"
+                },
+                {
+                    "name": "Renato Mefi",
+                    "email": "renato@mefi.in"
+                }
+            ],
+            "description": "Symfony GraphiQLBundle makes possible to render the UI into your symfony project",
+            "keywords": [
+                "graphiql",
+                "graphql"
+            ],
+            "time": "2018-05-14T09:39:33+00:00"
         },
         {
             "name": "symfony/browser-kit",
