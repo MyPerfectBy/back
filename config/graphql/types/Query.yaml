@@ -5,5 +5,5 @@ Query:
         fields:
             menu:
                 description: "Getting menu for Process module"
-                type: "ProcessMenu"
-                resolve: "@=service('process.space.service').getMenu()"
+                type: "Menu"
+#                resolve: "@=service('process.space.service').getMenu()"
