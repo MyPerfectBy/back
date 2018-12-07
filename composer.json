@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "nelmio/cors-bundle": "^1.5",
+        "overblog/graphiql-bundle": "^0.1.1",
         "overblog/graphql-bundle": "^0.11.10",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "4.2.*",
@@ -28,7 +29,6 @@
         "symfony/yaml": "4.2.*"
     },
     "require-dev": {
-        "overblog/graphiql-bundle": "^0.1.1",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",

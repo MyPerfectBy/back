@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7dd74e985d0d19594195d5b4e771491",
+    "content-hash": "996e9b016d56c371fc2398b04281ce9a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1593,6 +1593,74 @@
                 "service proxies"
             ],
             "time": "2018-09-27T13:45:01+00:00"
+        },
+        {
+            "name": "overblog/graphiql-bundle",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overblog/GraphiQLBundle.git",
+                "reference": "e3164ef62ff7fd91954009266e84803a6543ae96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overblog/GraphiQLBundle/zipball/e3164ef62ff7fd91954009266e84803a6543ae96",
+                "reference": "e3164ef62ff7fd91954009266e84803a6543ae96",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "symfony/http-foundation": "^3.2.2 || ^4.0",
+                "symfony/routing": "^3.2 || ^4.0",
+                "symfony/twig-bundle": "^3.2.10 || ^4.0"
+            },
+            "require-dev": {
+                "overblog/graphql-bundle": "^0.9.0 || ^0.10.0",
+                "phpunit/phpunit": "^5.7 || ^6.0",
+                "sensio/framework-extra-bundle": "^3.0 || ^4.0",
+                "symfony/browser-kit": "^3.2 || ^4.0",
+                "symfony/config": "^3.2 || ^4.0",
+                "symfony/console": "^3.2 || ^4.0",
+                "symfony/dependency-injection": "^3.2 || ^4.0",
+                "symfony/expression-language": "^3.2 || ^4.0",
+                "symfony/framework-bundle": "^3.2.2 || ^4.0",
+                "symfony/templating": "^3.2 || ^4.0",
+                "symfony/yaml": "^3.2 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Overblog\\GraphiQLBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Overblog",
+                    "homepage": "http://www.over-blog.com"
+                },
+                {
+                    "name": "Renato Mefi",
+                    "email": "renato@mefi.in"
+                }
+            ],
+            "description": "Symfony GraphiQLBundle makes possible to render the UI into your symfony project",
+            "keywords": [
+                "graphiql",
+                "graphql"
+            ],
+            "time": "2018-05-14T09:39:33+00:00"
         },
         {
             "name": "overblog/graphql-bundle",
@@ -3311,7 +3379,7 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
@@ -4109,16 +4177,16 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "97b9f457df748357eec101df5c8b1c649b543241"
+                "reference": "649460207e77da6c545326c7f53618d23ad2c866"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/97b9f457df748357eec101df5c8b1c649b543241",
-                "reference": "97b9f457df748357eec101df5c8b1c649b543241",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/649460207e77da6c545326c7f53618d23ad2c866",
+                "reference": "649460207e77da6c545326c7f53618d23ad2c866",
                 "shasum": ""
             },
             "require": {
@@ -4182,7 +4250,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2018-11-29T14:48:32+00:00"
+            "time": "2018-12-03T22:08:12+00:00"
         },
         {
             "name": "symfony/security-bundle",
@@ -5640,74 +5708,6 @@
                 "php"
             ],
             "time": "2018-10-10T09:24:14+00:00"
-        },
-        {
-            "name": "overblog/graphiql-bundle",
-            "version": "v0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/overblog/GraphiQLBundle.git",
-                "reference": "e3164ef62ff7fd91954009266e84803a6543ae96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/overblog/GraphiQLBundle/zipball/e3164ef62ff7fd91954009266e84803a6543ae96",
-                "reference": "e3164ef62ff7fd91954009266e84803a6543ae96",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0",
-                "symfony/http-foundation": "^3.2.2 || ^4.0",
-                "symfony/routing": "^3.2 || ^4.0",
-                "symfony/twig-bundle": "^3.2.10 || ^4.0"
-            },
-            "require-dev": {
-                "overblog/graphql-bundle": "^0.9.0 || ^0.10.0",
-                "phpunit/phpunit": "^5.7 || ^6.0",
-                "sensio/framework-extra-bundle": "^3.0 || ^4.0",
-                "symfony/browser-kit": "^3.2 || ^4.0",
-                "symfony/config": "^3.2 || ^4.0",
-                "symfony/console": "^3.2 || ^4.0",
-                "symfony/dependency-injection": "^3.2 || ^4.0",
-                "symfony/expression-language": "^3.2 || ^4.0",
-                "symfony/framework-bundle": "^3.2.2 || ^4.0",
-                "symfony/templating": "^3.2 || ^4.0",
-                "symfony/yaml": "^3.2 || ^4.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Overblog\\GraphiQLBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Overblog",
-                    "homepage": "http://www.over-blog.com"
-                },
-                {
-                    "name": "Renato Mefi",
-                    "email": "renato@mefi.in"
-                }
-            ],
-            "description": "Symfony GraphiQLBundle makes possible to render the UI into your symfony project",
-            "keywords": [
-                "graphiql",
-                "graphql"
-            ],
-            "time": "2018-05-14T09:39:33+00:00"
         },
         {
             "name": "symfony/browser-kit",

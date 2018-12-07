@@ -1,0 +1,9 @@
+Query:
+    type: object
+    config:
+        description: "Menu ORM repository"
+        fields:
+            menu:
+                description: "Getting menu for Process module"
+                type: "ProcessMenu"
+                resolve: "@=service('process.space.service').getMenu()"
