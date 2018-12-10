@@ -6,4 +6,4 @@ Query:
             menu:
                 description: "Getting menu for Process module"
                 type: "Menu"
-#                resolve: "@=service('process.space.service').getMenu()"
+#               resolve: "@=service('process.space.service').getMenu()"
