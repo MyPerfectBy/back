@@ -13,10 +13,10 @@ security:
                 property: username
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|images|js)|^/graphiql
             security: false
         main:
-            anonymous: true
+#           anonymous: true
 
             logout:
 
