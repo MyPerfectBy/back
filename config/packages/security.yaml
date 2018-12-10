@@ -1,7 +1,8 @@
 security:
     encoders:
         App\Entity\Security\User:
-            algorithm: argon2i
+            algorithm: bcrypt
+            cost: 12
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -15,7 +16,21 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
+            anonymous: ~
+
+            logout:
+
+                   path:   /logout
+                   target: /
+                   invalidate_session: false
+                   delete_cookies:
+                                  a: { path: null, domain: null }
+                                  b: { path: null, domain: null }
+                   handlers: [app.logout.listener]
+
+            guard:
+                    authenticators:
+                                - App\Security\TokenAuthenticator
 
             # activate different ways to authenticate
 
