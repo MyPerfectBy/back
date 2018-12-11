@@ -19,12 +19,13 @@ class VKontakteController extends AbstractController
     {
 
         // will redirect to Vkontakte!
-        return $clientRegistry
+       return  $clientRegistry
             ->getClient('vkontakte') // key used in config/packages/knpu_oauth2_client.yaml
             ->redirect([
                 'public_profile', 'email' // the scopes you want to access
             ])
             ;
+
     }
 
     /**
@@ -50,7 +51,7 @@ class VKontakteController extends AbstractController
 
             // do something with all this new power!
             // e.g. $name = $user->getFirstName();
-            var_dump($user); die;
+            var_dump(1111); die;
             // ...
         } catch (IdentityProviderException $e) {
             // something went wrong!

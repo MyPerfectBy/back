@@ -32,6 +32,7 @@ class VKontakteAuthenticator extends SocialAuthenticator
      */
     public function supports(Request $request)
     {
+
         // continue ONLY if the current ROUTE matches the check ROUTE
         return $request->attributes->get('_route') === 'connect_vkontakte_check';
     }
@@ -66,7 +67,7 @@ class VKontakteAuthenticator extends SocialAuthenticator
 
         // 3) Maybe you just want to "register" them by creating
         // a User object
-        $user->set($vkontakteUser->getId());
+        $user->setVkontakteId($vkontakteUser->getId());
         $this->em->persist($user);
         $this->em->flush();
 
