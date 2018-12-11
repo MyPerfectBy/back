@@ -23,6 +23,11 @@ class User implements UserInterface
     private $username;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $vkontakteId;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -105,4 +110,22 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * @return integer
+     */
+    public function getVkontakteId()
+    {
+        return $this->vkontakteId;
+    }
+
+    /**
+     * @param integer $vkontakteId
+     */
+    public function setVkontakteId($vkontakteId): void
+    {
+        $this->vkontakteId = $vkontakteId;
+    }
+
+
 }
