@@ -19,7 +19,6 @@ security:
 #           anonymous: true
 
             logout:
-
                    path:   /logout
                    target: /
                    invalidate_session: false
