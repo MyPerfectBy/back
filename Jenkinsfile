@@ -16,6 +16,19 @@ pipeline {
             steps {
                 script {
                         try {
+                            sh "php \bin\console doctrine:migrations:migrate"
+                        } catch (Exception e) {
+                            e = "<code>\u274C ERROR(${env.BRANCH_NAME} backend branch): MIGRATION ERROR</code>"
+                            sh "curl 'https://api.telegram.org/bot705294643:AAGnXC6EzmrpXU4USD6uxq7U1Qt853s4ciY/sendMessage?chat_id=-260723883@Avakada_CI&text=${e}&parse_mode=HTML'"
+                            throw ex
+                        }
+                    }
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                        try {
                             sh "composer install"
                         } catch (Exception e) {
                             e = "<code>\u274C ERROR(${env.BRANCH_NAME} backend branch): BUILD ERROR</code>"
