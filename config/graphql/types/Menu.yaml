@@ -1,0 +1,8 @@
+Menu:
+    type: object
+    config:
+        description: "Menu"
+        fields:
+            apps:
+                type: "String"
+                description: "Test applications"
