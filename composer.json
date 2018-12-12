@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "aego/oauth2-odnoklassniki": "^0.4.1",
+        "doctrine/annotations": "^1.6",
         "j4k/oauth2-vkontakte": "^1.1",
         "knpuniversity/oauth2-client-bundle": "^1.25",
         "league/oauth2-client": "^1.4",

@@ -44,6 +44,18 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @var string The hashed register code
+     * @ORM\Column(type="string")
+     */
+    private $registerCode;
+
+    /**
+     * @ORM\Column(name="$registerDate", type="datetime", nullable=true)
+     */
+    protected $registerDate;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,5 +161,36 @@ class User implements UserInterface
         $this->email = $email;
     }
 
+    /**
+     * @return string
+     */
+    public function getRegisterCode(): string
+    {
+        return $this->registerCode;
+    }
+
+    /**
+     * @param string $registerCode
+     */
+    public function setRegisterCode(string $registerCode): void
+    {
+        $this->registerCode = $registerCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegisterDate()
+    {
+        return $this->registerDate;
+    }
+
+    /**
+     * @param mixed $registerDate
+     */
+    public function setRegisterDate($registerDate): void
+    {
+        $this->registerDate = $registerDate;
+    }
 
 }

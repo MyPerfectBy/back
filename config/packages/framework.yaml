@@ -15,7 +15,10 @@ framework:
     #fragments: true
     php_errors:
         log: true
-
+    validation:
+            enabled: true
+            # possible values: 'loose', 'strict', 'html5'
+            email_validation_mode: 'html5'
     cache:
         # Put the unique name of your app here: the prefix seed
         # is used to compute stable namespaces for cache keys.
