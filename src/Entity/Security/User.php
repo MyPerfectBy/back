@@ -23,6 +23,12 @@ class User implements UserInterface
     private $username;
 
     /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $email;
+
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $vkontakteId;
@@ -125,6 +131,22 @@ class User implements UserInterface
     public function setVkontakteId($vkontakteId): void
     {
         $this->vkontakteId = $vkontakteId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
+        $this->email = $email;
     }
 
 
