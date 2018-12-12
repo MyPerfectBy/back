@@ -1,0 +1,8 @@
+Profile:
+    type: object
+    config:
+        description: "Profile"
+        fields:
+            apps:
+                type: "username"
+                description: "Username"
