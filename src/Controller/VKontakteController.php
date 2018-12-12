@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use http\Env\Response;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,16 +17,10 @@ class VKontakteController extends AbstractController
      *
      * @Route("/connect/vkontakte", name="connect_vkontakte_start")
      */
-    public function connectAction(ClientRegistry $clientRegistry)
+    public function connectAction(Request $request)
     {
 
-        // will redirect to Vkontakte!
-       return  $clientRegistry
-            ->getClient('vkontakte') // key used in config/packages/knpu_oauth2_client.yaml
-            ->redirect([
-                'public_profile', 'email' // the scopes you want to access
-            ])
-            ;
+        return new JsonResponse(['status'=>'success']);
 
     }
 
