@@ -4,10 +4,13 @@ namespace App\Security;
 
 use App\Entity\Security\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
@@ -69,8 +72,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Username could not be found.', [], 401);
+            throw new CustomUserMessageAuthenticationException('Username could not be found.');
+        //    return new Response("", Response::HTTP_UNAUTHORIZED);
         }
+
         return $user;
     }
 
@@ -82,11 +87,23 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            return new RedirectResponse($targetPath);
+            return new JsonResponse("", Response::HTTP_OK);
         }
 
         // For example : return new RedirectResponse($this->router->generate('some_route'));
-        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+    }
+
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    {
+        $data = [
+            'message' => strtr($exception->getMessageKey(), $exception->getMessageData())
+
+// or to translate this message
+// $this->translator->trans($exception->getMessageKey(), $exception->getMessageData())
+        ];
+
+        return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
     }
 
     protected function getLoginUrl()

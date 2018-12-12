@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e65c94c2fa6aa60208823e3b5e3d9e70",
+    "content-hash": "fd60153fcedd23d569c5aa3733cc0cea",
     "packages": [
         {
             "name": "aego/oauth2-odnoklassniki",

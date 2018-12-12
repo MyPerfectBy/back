@@ -33,6 +33,7 @@ class UserService
         $this->em->persist($user);
         $this->em->flush();
 
+        return $user->getRegisterCode();
     }
 
 }
