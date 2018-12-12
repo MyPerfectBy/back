@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use http\Env\Response;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,12 +20,7 @@ class VKontakteController extends AbstractController
     public function connectAction(Request $request)
     {
 
-
-
-
-
-        var_dump($out);
-        die();
+        return new JsonResponse(['status'=>'success']);
 
     }
 

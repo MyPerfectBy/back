@@ -81,7 +81,7 @@ class VKontakteAuthenticator extends SocialAuthenticator
         }
 
 
-        $email = null;
+        $email = '';
         /* @var User $user */
         if (isset($credentials['email'])) {
             $email = $credentials['email'];
@@ -96,7 +96,7 @@ class VKontakteAuthenticator extends SocialAuthenticator
 
 
 
-        $user->setEmail();
+        $user->setEmail($email);
         $user->setVkontakteId($vkontakteUserId);
         $this->em->persist($user);
         $this->em->flush();
@@ -104,15 +104,7 @@ class VKontakteAuthenticator extends SocialAuthenticator
         return $user;
     }
 
-    /**
-     * @return VKontakteClient
-     */
-    private function getVKontakteClient()
-    {
-        return $this->clientRegistry
-            // "vkontakte" is the key used in config/packages/knpu_oauth2_client.yaml
-            ->getClient('vkontakte');
-    }
+
 
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
