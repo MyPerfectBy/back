@@ -15,16 +15,15 @@ class VKontakteController extends AbstractController
      *
      * @Route("/connect/vkontakte", name="connect_vkontakte_start")
      */
-    public function connectAction(ClientRegistry $clientRegistry)
+    public function connectAction(Request $request)
     {
 
-        // will redirect to Vkontakte!
-       return  $clientRegistry
-            ->getClient('vkontakte') // key used in config/packages/knpu_oauth2_client.yaml
-            ->redirect([
-                'public_profile', 'email' // the scopes you want to access
-            ])
-            ;
+
+
+
+
+        var_dump($out);
+        die();
 
     }
 

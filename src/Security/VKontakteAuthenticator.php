@@ -34,7 +34,7 @@ class VKontakteAuthenticator extends SocialAuthenticator
     {
 
         // continue ONLY if the current ROUTE matches the check ROUTE
-        return $request->attributes->get('_route') === 'connect_vkontakte_check';
+        return $request->attributes->get('_route') === 'connect_vkontakte_start';
     }
 
     /**
@@ -43,31 +43,61 @@ class VKontakteAuthenticator extends SocialAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        return $this->fetchAccessToken($this->getVKontakteClient());
+        $url = 'https://oauth.vk.com/access_token?client_id=' . $_ENV['OAUTH_VKONTAKTE_CLIENT_ID'] . '&client_secret='.
+            $_ENV['OAUTH_VKONTAKTE_CLIENT_SECRET'].'&redirect_uri=http://dev.makeperfect.by&code='.$request->get('code');
+
+
+        $out ='';
+        if ($curl = curl_init()) {
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $out = curl_exec($curl);
+
+            curl_close($curl);
+
+
+        }
+
+        $data = json_decode($out, true);
+
+        if (isset($data['error']) || !$data){
+            return false;
+        }
+
+        return $data;
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
 
-        $vkontakteUser = $this->getVKontakteClient()
-            ->fetchUserFromToken($credentials);
 
-        $email = $vkontakteUser->getEmail();
+        $vkontakteUserId = $credentials['user_id'];
 
 
         $existingUser = $this->em->getRepository(User::class)
-            ->findOneBy(['vkontakteId' => $vkontakteUser->getId()]);
+            ->findOneBy(['vkontakteId' => $vkontakteUserId]);
         if ($existingUser) {
             return $existingUser;
         }
 
-     /* @var User $user */
-        $user = $this->em->getRepository(User::class)
-            ->findOneBy(['email' => $email]);
 
-        // 3) Maybe you just want to "register" them by creating
-        // a User object
-        $user->setVkontakteId($vkontakteUser->getId());
+        $email = null;
+        /* @var User $user */
+        if (isset($credentials['email'])) {
+            $email = $credentials['email'];
+            $user = $this->em->getRepository(User::class)
+                ->findOneBy(['email' => $email]);
+        }
+
+        if (!isset($user)) {
+            $user = new User();
+        }
+
+
+
+
+        $user->setEmail();
+        $user->setVkontakteId($vkontakteUserId);
         $this->em->persist($user);
         $this->em->flush();
 
