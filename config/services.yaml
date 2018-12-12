@@ -34,7 +34,7 @@ services:
 
     user.service:
          public: true
-         class: App\Service\User\UserService
+         class: App\Services\User\UserService
          arguments: ["@service_container"]
 
     # add more service definitions when explicit configuration is needed

@@ -1,13 +1,10 @@
 <?php
-namespace App\Service\User;
+namespace App\Services\User;
 
 use App\Entity\Security\User;
 use Doctrine\ORM\EntityManager;
-use GraphQL\Error\UserError;
-use phpDocumentor\Reflection\Types\Array_;
-use phpDocumentor\Reflection\Types\Mixed_;
 use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\HttpKernel\Log\Logger;
+
 
 class UserService
 {
