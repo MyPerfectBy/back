@@ -13,7 +13,7 @@ security:
                 property: username
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)|^/graphiql|^/login_form
+            pattern: ^/(_(profiler|wdt)|css|images|js)|^/graphiql|^/login_form|^/connect/vkontakte
             security: false
         main:
 #           anonymous: true
@@ -31,7 +31,9 @@ security:
                     authenticators:
                                 - App\Security\TokenAuthenticator
                                 - App\Security\LoginFormAuthenticator
+                                - App\Security\VKontakteAuthenticator
                     entry_point: App\Security\LoginFormAuthenticator
+
 
             # activate different ways to authenticate
 
