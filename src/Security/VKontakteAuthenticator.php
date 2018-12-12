@@ -91,12 +91,21 @@ class VKontakteAuthenticator extends SocialAuthenticator
 
         if (!isset($user)) {
             $user = new User();
+            $user->setEmail($email);
+        }
+
+
+
+        $logTemp = random_int(10000, 100000000);
+        while ($this->em->getRepository(User::class )->findOneBy(['username'=>$logTemp])){
+            $logTemp = random_int(10000, 100000000);
+
         }
 
 
 
 
-        $user->setEmail($email);
+        $user->setUsername($logTemp);
         $user->setVkontakteId($vkontakteUserId);
         $this->em->persist($user);
         $this->em->flush();
