@@ -3,6 +3,12 @@ Profile:
     config:
         description: "Profile"
         fields:
-            apps:
-                type: "username"
-                description: "Username"
+              id:
+                 type: "Int!"
+                 description: "The unique ID of the profile."
+              title:
+                 type: "String"
+                 description: "Title of the profile"
+              description:
+                 type: "String"
+                 description: "Description of the profile"

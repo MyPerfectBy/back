@@ -10,4 +10,4 @@ Query:
             getProfile:
                 description: "Getting profile for user"
                 type: "Profile"
-                resolve: "@=service('profile.service').getMenu()"
+                resolve: "@=service('profile.service').getProfile()"
