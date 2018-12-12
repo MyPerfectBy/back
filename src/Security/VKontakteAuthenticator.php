@@ -44,7 +44,7 @@ class VKontakteAuthenticator extends SocialAuthenticator
     public function getCredentials(Request $request)
     {
         $url = 'https://oauth.vk.com/access_token?client_id=' . $_ENV['OAUTH_VKONTAKTE_CLIENT_ID'] . '&client_secret='.
-            $_ENV['OAUTH_VKONTAKTE_CLIENT_SECRET'].'&redirect_uri=http://dev.makeperfect.by&code='.$request->get('code');
+            $_ENV['OAUTH_VKONTAKTE_CLIENT_SECRET'].'&redirect_uri='.$_ENV['FRONT_URL'].'&code='.$request->get('code');
 
 
         $out ='';

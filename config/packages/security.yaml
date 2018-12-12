@@ -13,7 +13,7 @@ security:
                 property: username
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)|^/graphiql|^/login_form|^/connect/vkontakte
+            pattern: ^/(_(profiler|wdt)|css|images|js)|^/graphiql|^/login_form
             security: false
         main:
 #           anonymous: true
