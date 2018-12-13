@@ -12,3 +12,15 @@ Profile:
               description:
                  type: "String"
                  description: "Description of the profile"
+              viewsCount:
+                 type: "Int"
+                 description: "Number of view of the profile"
+              dateChanged:
+                  type: "DateTime"
+                  description: "Date changet of the profile"
+              address:
+                  type: "String"
+                  description: "Address of the profile"
+              avatar:
+                  type: "String"
+                  description: "Avatar of the profile"

@@ -37,4 +37,61 @@ class ProfileService
 
         return $profile;
     }
+
+    /**
+     * @param $args
+     * @return Profile|\Doctrine\Common\Persistence\ObjectRepository|\Doctrine\ORM\EntityRepository|null|object
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Exception
+     */
+    public function mutationProfile($args){
+        /** @var Profile $profile */
+        $profile = $this->em->getRepository("App:Profile")->find($args["id"]);
+        if(!$profile) throw new UserError(sprintf('Could not find people profile #%d', $args['id']));
+        $action = 'mutationProfile';
+
+        if(array_key_exists("title",$args) && $args['title'])
+        {
+            $profile->setTitle($args['title']);
+        }
+
+        if(array_key_exists("description",$args))
+        {
+            $profile->setDescription($args['description']);
+        }
+
+//        if(array_key_exists("types",$args))
+//        {
+//            $newTypes = $this->em->getRepository('App\Entity\People\ProfileType')->findBy(['uuid'=>$args['types']]);
+//
+//
+//            $oldTypes = $profile->getTypes();
+//
+//            foreach ($oldTypes as $oldType){
+//                $profile->removeTypes($oldType);
+//            }
+//
+//            foreach ($newTypes as $newType){
+//                $profile->addTypes($newType);
+//            }
+//
+//        }
+
+        if(array_key_exists("address",$args))
+        {
+
+            $profile->setAddress($args['address']);
+        }
+
+        $this->em->flush();
+
+       // на сокет отправка
+       // $event = new SendSocketUpdateEvent($this->serializableProfile($action, $profile));
+
+       // $this->container->get("event_dispatcher")->dispatch("send_socket_update", $event);
+
+        return $profile;
+
+    }
 }
