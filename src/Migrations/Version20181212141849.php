@@ -16,7 +16,7 @@ final class Version20181212141849 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE profile CHANGE user user INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE user CHANGE roles roles JSON NOT NULL, CHANGE password password VARCHAR(255) DEFAULT NULL, CHANGE register_code register_code VARCHAR(255) DEFAULT NULL, CHANGE $registerDate $registerDate DATETIME DEFAULT NULL');
+        $this->addSql('ALTER TABLE user CHANGE roles roles JSON NOT NULL, CHANGE password password VARCHAR(255) DEFAULT NULL, CHANGE register_code register_code VARCHAR(255) DEFAULT NULL, CHANGE registerDate $registerDate DATETIME DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void

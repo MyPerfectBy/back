@@ -52,7 +52,7 @@ class Profile
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="date_changed",type="datetime")
+     * @ORM\Column(name="date_changed",type="datetime", nullable=true)
      */
     protected $dateChanged;
 
