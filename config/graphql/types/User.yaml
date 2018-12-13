@@ -1,14 +1,11 @@
-Profile:
+User:
     type: object
     config:
-        description: "Profile"
+        description: "User"
         fields:
               id:
                  type: "Int!"
                  description: "The unique ID of the profile."
-              title:
+              username:
                  type: "String"
                  description: "Title of the profile"
-              description:
-                 type: "String"
-                 description: "Description of the profile"

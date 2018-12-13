@@ -24,3 +24,6 @@ Profile:
               avatar:
                   type: "String"
                   description: "Avatar of the profile"
+              user:
+                type: "User"
+                description: "User of the profile"
