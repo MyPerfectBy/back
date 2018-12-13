@@ -1,0 +1,25 @@
+Mutation:
+    type: object
+    config:
+        fields:
+               mutationProfile:
+                                 description: "Profile Entity Mutation"
+                                 type: Profile!
+                                 resolve: "@=service('profile.service').mutationProfile(args['input'])"
+                                 args:
+                                     input:
+                                          type: "MutationProfileInput"
+
+
+MutationProfileInput:
+    type: input-object
+    config:
+        fields:
+            id:
+                type: "Int!"
+            title:
+                type: "String"
+            description:
+                type: "String"
+            address:
+                type: "Int"
