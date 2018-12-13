@@ -106,8 +106,22 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
     }
 
+    /**
+     * Called when authentication is needed, but it's not sent
+     */
+    public function start(Request $request, AuthenticationException $authException = null)
+    {
+        $data = [
+// you might translate this message
+            'message' => 'Authentication Required',
+        ];
+
+        return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
+    }
+
     protected function getLoginUrl()
     {
-        return $this->router->generate('app_login2');
+        //return $this->router->generate('app_login2');
+
     }
 }
