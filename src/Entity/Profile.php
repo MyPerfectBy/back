@@ -9,6 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Profile
 {
+
+
+    const SUPPLIER = 0;
+    const CUSTOMER = 1;
+
+    public static $types = [
+        self::SUPPLIER => "Поставщик услуг",
+        self::CUSTOMER     => "Потребитель"
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -33,6 +43,38 @@ class Profile
      * @ORM\Column(name="description",type="text",nullable=true)
      */
     protected $description;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="views_count",type="integer",nullable=true)
+     */
+    protected $viewsCount;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="date_changed",type="datetime")
+     */
+    protected $dateChanged;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="type",type="integer",nullable=true)
+     */
+    protected $type;
+
+    /**
+     * @var string
+     * @ORM\Column(name="address",type="string",length=255)
+     */
+    protected $address;
+
+    /**
+     * @var string
+     * @ORM\Column(name="avatar",type="string",length=255)
+     */
+    protected $avatar;
+
+
 
     public function getId(): ?int
     {
@@ -85,6 +127,38 @@ class Profile
     public function setUser($user): void
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return int
+     */
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param int $type
+     */
+    public function setType(int $type): void
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress(): string
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress(string $address): void
+    {
+        $this->address = $address;
     }
 
 
