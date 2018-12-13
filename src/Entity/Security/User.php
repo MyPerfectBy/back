@@ -52,7 +52,7 @@ class User implements UserInterface
     private $registerCode;
 
     /**
-     * @ORM\Column(name="registerDate", type="datetime", nullable=true)
+     * @ORM\Column(name="register_date", type="datetime", nullable=true)
      */
     protected $registerDate;
 
