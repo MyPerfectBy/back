@@ -52,15 +52,15 @@ class User implements UserInterface
     private $registerCode;
 
     /**
-     * @ORM\Column(name="$registerDate", type="datetime", nullable=true)
+     * @ORM\Column(name="registerDate", type="datetime", nullable=true)
      */
     protected $registerDate;
 
-    /**
-     * @var Profile|null
-     * @ORM\OneToOne(targetEntity="App\Entity\Profile", mappedBy="user")
-     */
-    protected $profile;
+//    /**
+//     * @var Profile|null
+//     * @ORM\OneToOne(targetEntity="App\Entity\Profile", mappedBy="user")
+//     */
+//    protected $profile;
 
 
     public function getId(): ?int
@@ -200,21 +200,21 @@ class User implements UserInterface
         $this->registerDate = $registerDate;
     }
 
-    /**
-     * @return Profile|null
-     */
-    public function getProfile(): ?Profile
-    {
-        return $this->profile;
-    }
-
-    /**
-     * @param Profile|null $profile
-     */
-    public function setProfile(?Profile $profile): void
-    {
-        $this->profile = $profile;
-    }
+//    /**
+//     * @return Profile|null
+//     */
+//    public function getProfile(): ?Profile
+//    {
+//        return $this->profile;
+//    }
+//
+//    /**
+//     * @param Profile|null $profile
+//     */
+//    public function setProfile(?Profile $profile): void
+//    {
+//        $this->profile = $profile;
+//    }
 
 
 }
