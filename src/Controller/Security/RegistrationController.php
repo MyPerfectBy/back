@@ -42,7 +42,7 @@ class RegistrationController extends AbstractController
         $return = $this->container->get('user.service')->registerUser($input);
 
 
-        var_dump($this->errorsString); die();
+       // var_dump($this->errorsString); die();
 
 //// 1) build the form
 //

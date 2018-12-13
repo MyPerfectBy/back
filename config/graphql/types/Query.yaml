@@ -7,3 +7,7 @@ Query:
                 description: "Getting menu for Process module"
                 type: "Menu"
 #               resolve: "@=service('process.space.service').getMenu()"
+            getProfile:
+                description: "Getting profile for user"
+                type: "Profile"
+                resolve: "@=service('profile.service').getProfile()"
