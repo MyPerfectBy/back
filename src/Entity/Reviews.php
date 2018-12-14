@@ -30,14 +30,14 @@ class Reviews
 
     /**
      * @var Profile
-     * @ORM\OneToOne(targetEntity="App\Entity\Profile")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Profile")
      * @ORM\JoinColumn(name="author", referencedColumnName="id")
      */
     protected $author;
 
     /**
      * @var Profile
-     * @ORM\OneToOne(targetEntity="App\Entity\Profile")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Profile")
      * @ORM\JoinColumn(name="profile", referencedColumnName="id")
      */
     protected $profile;
