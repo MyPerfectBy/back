@@ -7,7 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 
-class FileTokensRepository extends ServiceEntityRepository
+class CitiesRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
