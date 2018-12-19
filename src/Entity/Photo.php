@@ -21,8 +21,8 @@ class Photo
     public $id;
 
     /**
-     * @var integer
-     * @ORM\Column(name="author", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Profile", inversedBy="id")
+     * @ORM\JoinColumn(name="file", referencedColumnName="id")
      */
     protected $author;
 
@@ -89,17 +89,17 @@ class Photo
     }
 
     /**
-     * @return int|null
+     * @return Profile|null
      */
-    public function getAuthor(): ?int
+    public function getAuthor(): ?Profile
     {
         return $this->author;
     }
 
     /**
-     * @param int|null $author
+     * @param Profile|null $author
      */
-    public function setAuthor(?int $author): void
+    public function setAuthor(?Profile $author): void
     {
         $this->author = $author;
     }

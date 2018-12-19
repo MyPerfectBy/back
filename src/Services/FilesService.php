@@ -2,6 +2,9 @@
 
 namespace App\Services;
 
+use App\Entity\Photo;
+use App\Entity\Profile;
+use App\Entity\Security\User;
 use Doctrine\ORM\EntityManager;
 use GraphQL\Error\UserError;
 use phpDocumentor\Reflection\Types\Integer;
@@ -14,6 +17,7 @@ class FilesService
     private $container;
     /**@var $em EntityManager */
     private $em;
+    const FILEPATH = '/../../../public/data/portfolio/';
 
     /**@throws */
     public function __construct(Container $container)
@@ -25,9 +29,6 @@ class FilesService
 
     public function singleUploadFile($idFileDoc, UploadedFile $file){
 
-        /** @var FileDocuments $fileDoc */
-        $fileDoc = $this->em->getRepository("App:Files\FileDocuments")->find($idFileDoc);
-        if(!$fileDoc) throw new UserError(sprintf('Could not find filedocument #%d', $idFileDoc));
 
         $targetDirectory = __DIR__ . self::FILEPATH;
 
@@ -47,39 +48,29 @@ class FilesService
         }
 /////////////////////// поиск существующего имени файла в директории
         $realName = str_replace("." . $file->getClientOriginalExtension(), "", $realName);
-        $search = $this->em->getRepository("App:Files\Files")->findBy(["realFileName" => $realName, "fileDocument" => $fileDoc->getId(),]);
+        $search = $this->em->getRepository("App:Files\Files")->findBy(["realFileName" => $realName]);
 
         $i = 1;
         while (count($search)) {
             $realName = $realName . "(" . $i . ")";
             $search = $this->em->getRepository("App:Files\Files")->findBy([
-                "realFileName" => $realName,
-                "fileDocument" => $fileDoc->getId(),
+                "realFileName" => $realName
             ]);
             $i++;
         }
 ///////////////////Добавление новоро файла в базу /////////////////////
+        /** @var User $user */
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        /** @var Profile $profile */
+        $profile = $this->em->getRepository("App:Profile")->findOneBy(['user'=>$user]);
 
-        $newFile = new Files();
-        $newFile->setAuthor(NULL);
-        $newFile->setFileDocument($fileDoc);
+        $newFile = new Photo();
+        $newFile->setAuthor($profile);
         $newFile->setFilePath($targetDirectory.$uniqName);
         $newFile->setSize($file->getClientSize());
         $newFile->setType($file->getClientOriginalExtension());
         $newFile->setRealFileName($realName);
         $newFile->setUniqFileName($uniqName);
-        if($fileDoc->getFiles()) {
-
-            /** @var Files $neighbour */
-            $neighbour = $this->em->getRepository("App:Files\Files")->findOneBy(["fileDocument"=>$fileDoc, "neighbourTop"=>NULL]);
-            if($neighbour){
-                $neighbour->setNeighbourTop($newFile);
-                $newFile->setNeighbourBottom($neighbour);
-            }
-
-        }else{
-            $newFile->setNeighbourTop(NULL);
-        }
 
         $this->em->persist($newFile);
         $file->move($targetDirectory, $uniqName);
@@ -90,10 +81,20 @@ class FilesService
             throw new UserError(sprintf('Error loading file'));
         $this->em->flush();
 
-        $action = "singleUploadFile";
-        $event = new SendSocketUpdateEvent($this->serializableFile($action, $newFile));
-        $this->container->get("event_dispatcher")->dispatch("send_socket_update", $event);
+//        $action = "singleUploadFile";
+//        $event = new SendSocketUpdateEvent($this->serializableFile($action, $newFile));
+//        $this->container->get("event_dispatcher")->dispatch("send_socket_update", $event);
 
         return $newFile;
+    }
+
+
+    private function generateUniqFileName($extName){
+        if ($extName && $extName != "") {
+            $uniqName = md5(microtime()) . substr(md5(rand()), 0, 9) . "." . $extName;
+        } else {
+            $uniqName = md5(microtime()) . substr(md5(rand()), 0, 9);
+        }
+        return $uniqName;
     }
 }
