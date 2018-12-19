@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Entity\Photo;
 use App\Entity\Profile;
 use App\Entity\Security\User;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use GraphQL\Error\UserError;
 use phpDocumentor\Reflection\Types\Integer;
@@ -18,6 +19,7 @@ class FilesService
     /**@var $em EntityManager */
     private $em;
     const FILEPATH = '/../../../public/data/portfolio/';
+    const COUNT_PORTFOLIO = 9;
 
     /**@throws */
     public function __construct(Container $container)
@@ -28,6 +30,16 @@ class FilesService
     }
 
     public function singleUploadFile($idFileDoc, UploadedFile $file){
+
+        /** @var User $user */
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        /** @var Profile $profile */
+        $profile = $this->em->getRepository("App:Profile")->findOneBy(['user'=>$user]);
+
+        /** @var ArrayCollection $portfolio */
+        $portfolio = $this->em->getRepository("App:Photo")->findBy(['author'=>$profile]);
+        if(count($portfolio->toArray())> self::COUNT_PORTFOLIO )
+            throw new UserError(sprintf('Error count portfolio'));
 
 
         $targetDirectory = __DIR__ . self::FILEPATH;
@@ -59,10 +71,7 @@ class FilesService
             $i++;
         }
 ///////////////////Добавление новоро файла в базу /////////////////////
-        /** @var User $user */
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        /** @var Profile $profile */
-        $profile = $this->em->getRepository("App:Profile")->findOneBy(['user'=>$user]);
+
 
         $newFile = new Photo();
         $newFile->setAuthor($profile);
