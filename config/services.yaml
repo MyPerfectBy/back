@@ -42,6 +42,11 @@ services:
          class: App\Services\ProfileService
          arguments: ["@service_container"]
 
+    files.service:
+         public: true
+         class: App\Services\FilesService
+         arguments: ["@service_container"]
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

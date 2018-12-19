@@ -1,0 +1,29 @@
+Photo:
+    type: object
+    config:
+            description: "An file"
+            fields:
+                id:
+                    type: "Int!"
+                    description: "The unique ID of the file"
+                author:
+                    type: "Int"
+                realFileName:
+                    type: "String"
+                    description: "Real file name"
+#                uniqFileName:
+#                    type: "String"
+#                    description: "Unique file name"
+                dateCreated:
+                    type: "DateTime"
+                    description: "Date created of the file"
+                type:
+                    type: "String"
+                    description: "File type"
+                size:
+                    type: "String"
+                    description: "File size"
+                token:
+                    type: "String"
+                    description: "File token"
+                    resolve: "@=service('files.file.service').getToken(value)"

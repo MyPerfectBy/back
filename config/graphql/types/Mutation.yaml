@@ -11,6 +11,13 @@ Mutation:
                                           type: "MutationProfileInput"
 
 
+               singleUploadPhoto:
+                                 type: 'Photo!'
+                                 resolve: "@=service('file.service').singleUploadFile(args['file'])"
+                                 args:
+                                      file: 'FileUpload!'
+
+
 MutationProfileInput:
     type: input-object
     config:
