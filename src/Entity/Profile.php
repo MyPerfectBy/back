@@ -162,4 +162,52 @@ class Profile
     }
 
 
+    /**
+     * @return int
+     */
+    public function getViewsCount(): int
+    {
+        return $this->viewsCount;
+    }
+
+    /**
+     * @param int $viewsCount
+     */
+    public function setViewsCount(int $viewsCount): void
+    {
+        $this->viewsCount = $viewsCount;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateChanged(): \DateTime
+    {
+        return $this->dateChanged;
+    }
+
+    /**
+     * @param \DateTime $dateChanged
+     */
+    public function setDateChanged(\DateTime $dateChanged): void
+    {
+        $this->dateChanged = $dateChanged;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatar(): string
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param string $avatar
+     */
+    public function setAvatar(string $avatar): void
+    {
+        $this->avatar = $avatar;
+    }
+
 }

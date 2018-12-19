@@ -19,6 +19,7 @@ class FilesService
     /**@var $em EntityManager */
     private $em;
     const FILEPATH = '/../../../public/data/portfolio/';
+    const AVATARSPATH = '/../../../public/data/avatars/';
     const COUNT_PORTFOLIO = 9;
 
     /**@throws */
@@ -29,7 +30,7 @@ class FilesService
 
     }
 
-    public function singleUploadFile($idFileDoc, UploadedFile $file){
+    public function singleUploadFile(UploadedFile $file){
 
         /** @var User $user */
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
@@ -95,6 +96,37 @@ class FilesService
 //        $this->container->get("event_dispatcher")->dispatch("send_socket_update", $event);
 
         return $newFile;
+    }
+
+    public function changeAvatars(UploadedFile $file) :Profile
+    {
+        /** @var User $user */
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        /** @var Profile $profile */
+        $profile = $this->em->getRepository("App:Profile")->findOneBy(['user'=>$user]);
+
+        $targetDirectory = __DIR__ . self::AVATARSPATH;
+
+        $realName = $file->getClientOriginalName();
+        $mimeType = $file->getClientMimeType();
+        $extName  = $file->getClientOriginalExtension();
+
+        $uniqName = $this->generateUniqFileName($extName);
+
+
+//////////////////////////////// проверка существования файла с таким именем
+        $finder = new Finder();
+        $finder->files()->in($targetDirectory)->name($uniqName);
+        while (count($finder)) {
+            $uniqName = $this->generateUniqFileName($extName);
+            $finder->files()->in($targetDirectory)->name($uniqName);
+        }
+///////////////////Добавление новоро файла в базу /////////////////////
+        unlink( $profile->getAvatar());
+        $profile->setAvatar($targetDirectory.$uniqName);
+        $this->em->flush($profile);
+
+        return $profile;
     }
 
 

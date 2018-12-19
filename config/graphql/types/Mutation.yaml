@@ -17,6 +17,12 @@ Mutation:
                                  args:
                                       file: 'FileUpload!'
 
+               changeAvatars:
+                                 type: 'Profile!'
+                                 resolve: "@=service('file.service').changeAvatars(args['file'])"
+                                 args:
+                                      file: 'FileUpload!'
+
 
 MutationProfileInput:
     type: input-object
