@@ -31,6 +31,11 @@ class ProfileServices
      */
     protected $service;
 
+    /**
+     *@ORM\Column(name="active", type="boolean")
+     */
+    protected $active;
+
 
     /**
      * @var float
@@ -90,4 +95,22 @@ class ProfileServices
     {
         $this->profile = $profile;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param mixed $active
+     */
+    public function setActive($active): void
+    {
+        $this->active = $active;
+    }
+
+
 }

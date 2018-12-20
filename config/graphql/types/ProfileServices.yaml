@@ -12,3 +12,6 @@ ProfileServices:
                 service:
                     type: "Services"
                     description: "Service of the service of profile"
+                profile:
+                    type: "Profile"
+                    description: "Profile of the service"

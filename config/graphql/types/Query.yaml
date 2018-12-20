@@ -18,6 +18,11 @@ Query:
                 resolve: "@=service('city.service').getCities()"
 
             getServices:
-                description: "Getting services for app"
+                description: "Getting type of services for app"
                 type: "[Services]"
                 resolve: "@=service('services.service').getServices()"
+
+            getProfileServices:
+                description: "Getting services for app"
+                type: "[ProfileServices]"
+                resolve: "@=service('services.profile.service').getProfileServices()"
