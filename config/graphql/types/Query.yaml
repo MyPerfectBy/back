@@ -3,9 +3,9 @@ Query:
     config:
         description: "Menu ORM repository"
         fields:
-            menu:
-                description: "Getting menu for Process module"
-                type: "Menu"
+#            menu:
+#                description: "Getting menu for Process module"
+#                type: "Menu"
 #               resolve: "@=service('process.space.service').getMenu()"
             getProfile:
                 description: "Getting profile for user"

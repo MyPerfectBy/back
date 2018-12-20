@@ -1,0 +1,11 @@
+Services:
+    type: object
+    config:
+            description: "An service of project"
+            fields:
+                id:
+                    type: "Int!"
+                    description: "The unique ID of the service of profile"
+                title:
+                    type: "String"
+                    description: "Price of the service of profile"

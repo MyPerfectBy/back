@@ -19,7 +19,7 @@ class ProfileServices
 
     /**
      * @var Profile
-     * @ORM\ManyToOne(targetEntity="App\Entity\Profile")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Profile", inversedBy="services")
      * @ORM\JoinColumn(name="profile", referencedColumnName="id")
      */
     protected $profile;
@@ -27,7 +27,7 @@ class ProfileServices
     /**
      * @var Service
      * @ORM\ManyToOne(targetEntity="App\Entity\Services")
-     * @ORM\JoinColumn(name="profile", referencedColumnName="id")
+     * @ORM\JoinColumn(name="service", referencedColumnName="id")
      */
     protected $service;
 

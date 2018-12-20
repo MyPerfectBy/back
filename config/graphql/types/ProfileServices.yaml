@@ -1,0 +1,14 @@
+ProfileServices:
+    type: object
+    config:
+            description: "An service of profile"
+            fields:
+                id:
+                    type: "Int!"
+                    description: "The unique ID of the service of profile"
+                price:
+                    type: "Float"
+                    description: "Price of the service of profile"
+                service:
+                    type: "Services"
+                    description: "Service of the service of profile"

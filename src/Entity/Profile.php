@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -73,6 +74,19 @@ class Profile
      * @ORM\Column(name="avatar",type="string",length=255)
      */
     protected $avatar;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Cities", inversedBy="id")
+     * @ORM\JoinColumn(name="city", referencedColumnName="id")
+     */
+    protected $city;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="ProfileServices", mappedBy="profile", cascade={"persist", "remove"})
+     */
+    protected $services;
+
 
 
 
@@ -209,5 +223,39 @@ class Profile
     {
         $this->avatar = $avatar;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city): void
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getServices(): Collection
+    {
+        return $this->services;
+    }
+
+    /**
+     * @param Collection $services
+     */
+    public function setServices(Collection $services): void
+    {
+        $this->services = $services;
+    }
+
+
 
 }

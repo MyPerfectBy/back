@@ -1,0 +1,11 @@
+City:
+    type: object
+    config:
+            description: "An city"
+            fields:
+                id:
+                    type: "Int!"
+                    description: "The unique ID of the file"
+                city:
+                    type: "String"
+                    description: "The unique ID of the city"

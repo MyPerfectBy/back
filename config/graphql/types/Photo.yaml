@@ -1,11 +1,11 @@
 Photo:
     type: object
     config:
-            description: "An file"
+            description: "An photo"
             fields:
                 id:
                     type: "Int!"
-                    description: "The unique ID of the file"
+                    description: "The unique ID of the photo"
                 author:
                     type: "Int"
                 realFileName:
