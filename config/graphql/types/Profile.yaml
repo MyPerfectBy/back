@@ -28,7 +28,7 @@ Profile:
                 type: "User"
                 description: "User of the profile"
               city:
-                 type: "City"
+                 type: "Cities"
                  description: "City of the profile"
               servises:
                  type: "[ProfileServices]"

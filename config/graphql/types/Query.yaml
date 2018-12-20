@@ -11,3 +11,13 @@ Query:
                 description: "Getting profile for user"
                 type: "Profile"
                 resolve: "@=service('profile.service').getProfile()"
+
+            getCities:
+                description: "Getting cities for app"
+                type: "[Cities]"
+                resolve: "@=service('city.service').getCities()"
+
+            getServices:
+                description: "Getting services for app"
+                type: "[Services]"
+                resolve: "@=service('services.service').getServices()"

@@ -1,4 +1,4 @@
-City:
+Cities:
     type: object
     config:
             description: "An city"
@@ -8,4 +8,4 @@ City:
                     description: "The unique ID of the file"
                 city:
                     type: "String"
-                    description: "The unique ID of the city"
+                    description: "Title of the city"

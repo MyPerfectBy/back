@@ -39,13 +39,23 @@ services:
 
     profile.service:
          public: true
-         class: App\Services\ProfileService
+         class: App\Service\ProfileService
          arguments: ["@service_container"]
 
     files.service:
          public: true
-         class: App\Services\FilesService
+         class: App\Service\FilesService
          arguments: ["@service_container"]
+
+    city.service:
+             public: true
+             class: App\Service\CityService
+             arguments: ["@service_container"]
+
+    services.service:
+             public: true
+             class: App\Service\ServicesService
+             arguments: ["@service_container"]
 
 
     # add more service definitions when explicit configuration is needed
