@@ -1,5 +1,5 @@
 <?php
-namespace App\GraphQL;
+namespace App\Service\GraphQL;
 
 use GraphQL\Language\AST\Node;
 

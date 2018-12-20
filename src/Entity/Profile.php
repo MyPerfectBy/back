@@ -177,9 +177,9 @@ class Profile
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getViewsCount(): int
+    public function getViewsCount(): ?int
     {
         return $this->viewsCount;
     }
