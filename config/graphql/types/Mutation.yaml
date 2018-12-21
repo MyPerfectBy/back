@@ -23,16 +23,44 @@ Mutation:
                                  args:
                                       file: 'FileUpload!'
 
+               addProfileService:
+                                 type: 'Profile!'
+                                 resolve: "@=service('services.profile.service').addProfileService(args['file'])"
+                                 args:
+                                      input:
+                                           type: 'ProfileService'
+
 
 MutationProfileInput:
     type: input-object
     config:
         fields:
             id:
+                description: "Id profile for change"
                 type: "Int!"
             title:
+                description: "New title"
                 type: "String"
             description:
+                description: "New description"
                 type: "String"
             address:
+                description: "New addres"
                 type: "Int"
+            city:
+                description: "New city"
+                type: "Int"
+
+ProfileService:
+    type: input-object
+    config:
+        fields:
+#             profile:
+#                 description: "Id profile for add new service"
+#                 type: "Int!"
+             service:
+                 description: "Id service for add new service"
+                 type: "Int!"
+             price:
+                 description: "Price for add new service"
+                 type: "Float!"

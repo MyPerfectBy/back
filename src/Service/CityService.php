@@ -8,11 +8,16 @@ use Symfony\Component\DependencyInjection\Container;
 
 class CityService
 {
+    /** @var $container Container  */
     private $container;
-    /**@var $em EntityManager */
+
+    /** @var $em EntityManager */
     private $em;
 
-    /**@throws */
+    /**
+     * @param $container
+     * @throws
+     */
     public function __construct(Container $container)
     {
         $this->container = $container;
@@ -20,6 +25,9 @@ class CityService
 
     }
 
+    /**
+     * @return array|\Doctrine\Common\Persistence\ObjectRepository|\Doctrine\ORM\EntityRepository
+     */
     public function getCities(){
 
         return  $this->em->getRepository("App:Cities")->findAll();

@@ -2,20 +2,22 @@
 
 namespace App\Service;
 
-use App\Entity\Security\User;
 use Doctrine\ORM\EntityManager;
-use GraphQL\Error\UserError;
-use Overblog\GraphQLBundle\Definition\Argument;
 use Symfony\Component\DependencyInjection\Container;
 
 
 class ServicesService
 {
+    /** @var $container Container  */
     private $container;
-    /**@var $em EntityManager */
+
+    /** @var $em EntityManager */
     private $em;
 
-    /**@throws */
+    /**
+     * @param $container
+     * @throws
+     */
     public function __construct(Container $container)
     {
         $this->container = $container;
@@ -23,6 +25,9 @@ class ServicesService
 
     }
 
+    /**
+     * @return array|\Doctrine\Common\Persistence\ObjectRepository|\Doctrine\ORM\EntityRepository
+     */
     public function getServices(){
         return  $this->em->getRepository("App:Services")->findAll();
     }

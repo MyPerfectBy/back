@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Overblog\GraphQLBundle\ExpressionLanguage\ExpressionFunction\DependencyInjection\Service;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProfileServicesRepository")
@@ -25,7 +25,8 @@ class ProfileServices
     protected $profile;
 
     /**
-     * @var Service
+     * @var Services
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Services")
      * @ORM\JoinColumn(name="service", referencedColumnName="id")
      */
@@ -65,17 +66,17 @@ class ProfileServices
     }
 
     /**
-     * @return Service
+     * @return Services
      */
-    public function getService(): Service
+    public function getService(): Services
     {
         return $this->service;
     }
 
     /**
-     * @param Service $service
+     * @param Services $service
      */
-    public function setService(Service $service): void
+    public function setService(Services $service): void
     {
         $this->service = $service;
     }

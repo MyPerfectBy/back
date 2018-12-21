@@ -4,25 +4,30 @@ namespace App\Service;
 
 use App\Entity\Photo;
 use App\Entity\Profile;
-use App\Entity\Security\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use GraphQL\Error\UserError;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FilesService
 {
+    /** @var $container Container  */
     private $container;
+
     /**@var $em EntityManager */
     private $em;
+
     const FILEPATH = '/../../../public/data/portfolio/';
     const AVATARSPATH = '/../../../public/data/avatars/';
     const COUNT_PORTFOLIO = 9;
 
-    /**@throws */
+
+    /**
+     * @param $container
+     * @throws
+     */
     public function __construct(Container $container)
     {
         $this->container = $container;
@@ -30,12 +35,19 @@ class FilesService
 
     }
 
+    /**
+     * @param UploadedFile $file
+     * @return Photo
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Exception
+     */
     public function singleUploadFile(UploadedFile $file){
 
-        /** @var User $user */
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         /** @var Profile $profile */
-        $profile = $this->em->getRepository("App:Profile")->findOneBy(['user'=>$user]);
+        $profile =  $this->container->get("profile.service")->getProfile();
+        if(!$profile) throw new UserError(sprintf('Could not find people profile'));
+
 
         /** @var ArrayCollection $portfolio */
         $portfolio = $this->em->getRepository("App:Photo")->findBy(['author'=>$profile]);
@@ -46,7 +58,6 @@ class FilesService
         $targetDirectory = __DIR__ . self::FILEPATH;
 
         $realName = $file->getClientOriginalName();
-        $mimeType = $file->getClientMimeType();
         $extName  = $file->getClientOriginalExtension();
 
         $uniqName = $this->generateUniqFileName($extName);
@@ -98,17 +109,21 @@ class FilesService
         return $newFile;
     }
 
+    /**
+     * @param UploadedFile $file
+     * @return Profile
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Exception
+     */
     public function changeAvatars(UploadedFile $file) :Profile
     {
-        /** @var User $user */
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         /** @var Profile $profile */
-        $profile = $this->em->getRepository("App:Profile")->findOneBy(['user'=>$user]);
+        $profile =  $this->container->get("profile.service")->getProfile();
+        if(!$profile) throw new UserError(sprintf('Could not find people profile'));
 
         $targetDirectory = __DIR__ . self::AVATARSPATH;
 
-        $realName = $file->getClientOriginalName();
-        $mimeType = $file->getClientMimeType();
         $extName  = $file->getClientOriginalExtension();
 
         $uniqName = $this->generateUniqFileName($extName);

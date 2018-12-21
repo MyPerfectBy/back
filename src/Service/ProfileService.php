@@ -6,17 +6,22 @@ use App\Entity\Profile;
 use App\Entity\Security\User;
 use Doctrine\ORM\EntityManager;
 use GraphQL\Error\UserError;
-use Overblog\GraphQLBundle\Definition\Argument;
 use Symfony\Component\DependencyInjection\Container;
 
 
 class ProfileService
 {
+
+    /** @var $container Container  */
     private $container;
-    /**@var $em EntityManager */
+
+    /** @var $em EntityManager */
     private $em;
 
-    /**@throws */
+    /**
+     * @param $container
+     * @throws
+     */
     public function __construct(Container $container)
     {
         $this->container = $container;
@@ -24,7 +29,10 @@ class ProfileService
 
     }
 
-
+    /**
+     * @return Profile
+     * @throws \Exception
+     */
     public function getProfile() :Profile
     {
         /** @var User $user */
@@ -41,7 +49,7 @@ class ProfileService
 
     /**
      * @param $args
-     * @return Profile|\Doctrine\Common\Persistence\ObjectRepository|\Doctrine\ORM\EntityRepository|null|object
+     * @return Profile|\Doctrine\Common\Persistence\ObjectRepository|\Doctrine\ORM\EntityRepository|null
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Exception
@@ -50,7 +58,7 @@ class ProfileService
         /** @var Profile $profile */
         $profile = $this->em->getRepository("App:Profile")->find($args["id"]);
         if(!$profile) throw new UserError(sprintf('Could not find people profile #%d', $args['id']));
-        $action = 'mutationProfile';
+        //$action = 'mutationProfile';
 
         if(array_key_exists("title",$args) && $args['title'])
         {
@@ -85,6 +93,14 @@ class ProfileService
             $profile->setAddress($args['address']);
         }
 
+        if(array_key_exists("city",$args))
+        {
+            $city = $this->em->getRepository("App:Cities")->find($args['city']);
+            if(!$city) throw new UserError(sprintf('Could not find city #%d', $args['city']));
+
+            $profile->setAddress($args['city']);
+        }
+
         $this->em->flush();
 
        // на сокет отправка
@@ -95,4 +111,6 @@ class ProfileService
         return $profile;
 
     }
+
+
 }
