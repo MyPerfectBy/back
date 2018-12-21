@@ -12,18 +12,21 @@ Mutation:
 
 
                singleUploadPhoto:
+                                 description: "Mutation for upload file"
                                  type: 'Photo!'
                                  resolve: "@=service('file.service').singleUploadFile(args['file'])"
                                  args:
                                       file: 'FileUpload!'
 
                changeAvatars:
+                                 description: "Mutation for change avatar"
                                  type: 'Profile!'
                                  resolve: "@=service('file.service').changeAvatars(args['file'])"
                                  args:
                                       file: 'FileUpload!'
 
                addProfileService:
+                                 description: "Mutation for add new service"
                                  type: 'ProfileServices!'
                                  resolve: "@=service('services.profile.service').addProfileService(args['input'])"
                                  args:
@@ -31,6 +34,7 @@ Mutation:
                                            type: 'ProfileServiceInput'
 
                changeActiveProfileService:
+                                 description: "Mutation for change status service"
                                  type: 'ProfileServices!'
                                  resolve: "@=service('services.profile.service').changeActiveProfileService(args['input'])"
                                  args:
@@ -76,8 +80,8 @@ changeActiveProfileService:
     config:
         fields:
               profileService:
-                      description: "Id service for add new service"
+                      description: "Id service for change service"
                       type: "Int!"
               active:
-                      description: "Price for add new service"
-                      type: "Boolean"
+                      description: "Status active"
+                      type: "Boolean!"
