@@ -57,11 +57,37 @@ class ProfileServicesService
         $profileService -> setProfile($profile);
         $profileService -> setPrice($args['price']);
         $profileService -> setService($service);
+        $profileService -> setActive(true);
         try{
             $this->em->persist($profileService);
             $this->em->flush();
         } catch (\Throwable $t){
-            throw new UserError(sprintf('Could not find service'));
+            throw new UserError(sprintf('Database flush error'));
+        }
+
+        return $profileService;
+    }
+
+
+    /**
+     * @param $args
+     * @return ProfileServices
+     * @throws \Exception
+     */
+    public function changeActiveProfileService($args){
+        /** @var Profile $profile */
+        $profile =  $this->container->get("profile.service")->getProfile();
+        if(!$profile) throw new UserError(sprintf('Could not find people profile'));
+
+        /** @var ProfileServices $profileService */
+        $profileService = $this->em->getRepository("App:ProfileServices")->findOneBy(["id"=>$args['profileService'], "profile"=>$profile]);
+        if(!$profileService)  throw new UserError(sprintf('Could not find profile service'));
+
+        $profileService -> setActive($args['active']);
+        try{
+            $this->em->flush();
+        } catch (\Throwable $t){
+            throw new UserError(sprintf('Database flush error'));
         }
 
         return $profileService;

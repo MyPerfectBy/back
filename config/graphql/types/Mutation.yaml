@@ -24,12 +24,18 @@ Mutation:
                                       file: 'FileUpload!'
 
                addProfileService:
-                                 type: 'Profile!'
-                                 resolve: "@=service('services.profile.service').addProfileService(args['file'])"
+                                 type: 'ProfileServices!'
+                                 resolve: "@=service('services.profile.service').addProfileService(args['input'])"
                                  args:
                                       input:
-                                           type: 'ProfileService'
+                                           type: 'ProfileServiceInput'
 
+               changeActiveProfileService:
+                                 type: 'ProfileServices!'
+                                 resolve: "@=service('services.profile.service').changeActiveProfileService(args['input'])"
+                                 args:
+                                     input:
+                                          type: 'changeActiveProfileService'
 
 MutationProfileInput:
     type: input-object
@@ -51,7 +57,7 @@ MutationProfileInput:
                 description: "New city"
                 type: "Int"
 
-ProfileService:
+ProfileServiceInput:
     type: input-object
     config:
         fields:
@@ -64,3 +70,14 @@ ProfileService:
              price:
                  description: "Price for add new service"
                  type: "Float!"
+
+changeActiveProfileService:
+    type: input-object
+    config:
+        fields:
+              profileService:
+                      description: "Id service for add new service"
+                      type: "Int!"
+              active:
+                      description: "Price for add new service"
+                      type: "Boolean"

@@ -15,3 +15,6 @@ ProfileServices:
                 profile:
                     type: "Profile"
                     description: "Profile of the service"
+                active:
+                    type: "Boolean"
+                    description: "ON/OFF status"
