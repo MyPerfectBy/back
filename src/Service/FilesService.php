@@ -22,7 +22,7 @@ class FilesService
     const FILEPATH = '/../../../public/data/portfolio/';
     const AVATARSPATH = '/../../../public/data/avatars/';
     const COUNT_PORTFOLIO = 9;
-    const MAX_FOTOSIZE = 25; // size file MB
+    const MAX_FOTOSIZE = 15; // size file MB
     const FILES_TYPES = ['gif', 'png', 'bmp', 'ico', 'jpeg', 'jpg' ];
     /**
      * @param $container
