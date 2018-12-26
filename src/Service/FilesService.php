@@ -22,8 +22,8 @@ class FilesService
     const FILEPATH = '/../../../public/data/portfolio/';
     const AVATARSPATH = '/../../../public/data/avatars/';
     const COUNT_PORTFOLIO = 9;
-
-
+    const MAX_FOTOSIZE = 25; // size file MB
+    const FILES_TYPES = ['gif', 'png', 'bmp', 'ico', 'jpeg', 'jpg' ];
     /**
      * @param $container
      * @throws
@@ -44,15 +44,22 @@ class FilesService
      */
     public function singleUploadFile(UploadedFile $file){
 
+        if($file->getSize()/1048576 > self::MAX_FOTOSIZE )
+            throw new UserError(sprintf('Error maxsize foto'));
+        if( !in_array(strtolower($file->getType()), self::FILES_TYPES))
+             throw new UserError(sprintf("Unrecognized file's type"));
+
         /** @var Profile $profile */
         $profile =  $this->container->get("profile.service")->getProfile();
         if(!$profile) throw new UserError(sprintf('Could not find people profile'));
 
 
-        /** @var ArrayCollection $portfolio */
+            /** @var ArrayCollection $portfolio */
         $portfolio = $this->em->getRepository("App:Photo")->findBy(['author'=>$profile]);
         if(count($portfolio->toArray())> self::COUNT_PORTFOLIO )
             throw new UserError(sprintf('Error count portfolio'));
+
+
 
 
         $targetDirectory = __DIR__ . self::FILEPATH;
@@ -88,7 +95,7 @@ class FilesService
         $newFile = new Photo();
         $newFile->setAuthor($profile);
         $newFile->setFilePath($targetDirectory.$uniqName);
-        $newFile->setSize($file->getClientSize());
+        $newFile->setSize($file->getSize());
         $newFile->setType($file->getClientOriginalExtension());
         $newFile->setRealFileName($realName);
         $newFile->setUniqFileName($uniqName);
@@ -118,6 +125,13 @@ class FilesService
      */
     public function changeAvatars(UploadedFile $file) :Profile
     {
+
+        if($file->getSize()/1048576 > self::MAX_FOTOSIZE )
+            throw new UserError(sprintf('Error maxsize foto'));
+        if( !in_array(strtolower($file->getType()), self::FILES_TYPES))
+            throw new UserError(sprintf("Unrecognized file's type"));
+
+
         /** @var Profile $profile */
         $profile =  $this->container->get("profile.service")->getProfile();
         if(!$profile) throw new UserError(sprintf('Could not find people profile'));
@@ -127,7 +141,6 @@ class FilesService
         $extName  = $file->getClientOriginalExtension();
 
         $uniqName = $this->generateUniqFileName($extName);
-
 
 //////////////////////////////// проверка существования файла с таким именем
         $finder = new Finder();
