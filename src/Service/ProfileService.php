@@ -113,4 +113,8 @@ class ProfileService
     }
 
 
+    public function getPortfolio(Profile $profile){
+        return $this->em->getRepository("App:Photo")->findBy(["author"=>$profile]);
+    }
+
 }

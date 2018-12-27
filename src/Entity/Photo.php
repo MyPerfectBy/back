@@ -22,7 +22,7 @@ class Photo
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Profile", inversedBy="id")
-     * @ORM\JoinColumn(name="file", referencedColumnName="id")
+     * @ORM\JoinColumn(name="author", referencedColumnName="id")
      */
     protected $author;
 

@@ -33,3 +33,7 @@ Profile:
               servises:
                  type: "[ProfileServices]"
                  description: "Services of the profile"
+              portfolio:
+                  type: "[Photo]"
+                  description: "Portfolio of the profile"
+                  resolve: "@=service('profile.service').getPortfolio(value)"
