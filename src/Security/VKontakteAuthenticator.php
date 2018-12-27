@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use KnpU\OAuth2ClientBundle\Client\Provider\VKontakteClient;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,7 +62,7 @@ class VKontakteAuthenticator extends SocialAuthenticator
         $data = json_decode($out, true);
 
         if (isset($data['error']) || !$data){
-            return false;
+            throw new Exception('error');
         }
 
         return $data;

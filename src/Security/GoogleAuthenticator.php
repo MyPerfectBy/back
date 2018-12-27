@@ -39,7 +39,38 @@ class GoogleAuthenticator extends SocialAuthenticator
 
     public function getCredentials(Request $request)
     {
-        return $this->fetchAccessToken($this->getGoogleClient());
+
+        $params = [
+            'client_id' => $_ENV['OAUTH_GOOGLE_CLIENT_ID'],
+            'client_secret' => $_ENV['OAUTH_GOOGLE_CLIENT_SECRET'],
+            'redirect_uri' => $_ENV['FRONT_URL'],
+            'grant_type' => 'authorization_code',
+            'code' => $_GET['code']
+        ];
+
+
+        $url = 'https://accounts.google.com/o/oauth2/token';
+
+
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(http_build_query($params)));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+$tokenInfo = json_decode($result, true);
+
+
+        if (isset($result['error']) || !$result){
+            return false;
+        }
+
+        return $result;
+
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
